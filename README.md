@@ -1,5 +1,21 @@
 # Assignment 2
 
+## Comandi utili per lanciare tutte le parti di rosplan in sequenza
+
+Prima bisogna creare il file domain.pddl e problem.pddl
+Poi bisogna creare un file launch con tutto il necessario e lanciarlo:
+```bash
+roslaunch rosplan_planning_system file_name.launch
+```
+
+Poi bisogna lanciare i seguenti comandi su un altro terminale:
+```bash
+rosservice call /rosplan_problem_interface/problem_generation_server
+rosservice call /rosplan_planner_interface/planning_server
+rosservice call /rosplan_parsing_interface/parse_plan
+rosservice call /rosplan_plan_dispatcher/dispatch_plan
+```
+
 ## Group members
 
 | Name Surname          | ID       |
