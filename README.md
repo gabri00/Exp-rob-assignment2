@@ -16,6 +16,13 @@ rosservice call /rosplan_parsing_interface/parse_plan
 rosservice call /rosplan_plan_dispatcher/dispatch_plan
 ```
 
+Clone the following packages:
+```bash
+git clone https://github.com/CarmineD8/my_rosplan_interface.git
+git clone https://github.com/CarmineD8/rt2_packages.git
+git clone https://github.com/CarmineD8/planning.git
+```
+
 ## Group members
 
 | Name Surname          | ID       |
