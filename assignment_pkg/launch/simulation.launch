@@ -9,8 +9,6 @@
     <arg name="recording" value="false"/>
     <arg name="debug" value="false"/>
   </include>
-  
-</node>
 
   <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
 
@@ -76,6 +74,6 @@
   <rosparam file="$(find rosbot_description)/config/joint_state_controller.yaml" command="load" ns="/exp_rob" />
   <!-- Spawn the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/exp_rob
-      joint_state_controller ">
+      joint_state_controller "></node>
 </launch>
 

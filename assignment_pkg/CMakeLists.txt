@@ -16,7 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   visualization_msgs
   message_generation
-  rosplan_planning_system
 )
 
 ## Generate messages in the 'msg' folder
@@ -62,9 +61,7 @@ include_directories(
 )
 
 add_executable(markers_node src/markers_node.cpp)
-add_executable(myaction src/my_action.cpp)
 
-add_dependencies(myaction ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(markers_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(markers_node
