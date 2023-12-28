@@ -11,12 +11,15 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
+  <build_depend>rosplan_planning_system</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>rosplan_planning_system</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <exec_depend>rosplan_planning_system</exec_depend>
 
   <depend>gazebo_ros</depend>
   <depend>gazebo_ros_control</depend>
@@ -30,6 +33,7 @@
   <depend>aruco_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>visualization_msgs</depend>
+  
 
   <export>
   </export>
