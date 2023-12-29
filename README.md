@@ -23,6 +23,39 @@ git clone https://github.com/CarmineD8/rt2_packages.git
 git clone https://github.com/CarmineD8/planning.git
 ```
 
+Come pubblicare il goal da terminale per la move_base:
+```bash
+rostopic pub /move_base/goal move_base_msgs/MoveBaseActionGoal "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+goal_id:
+  stamp:
+    secs: 0
+    nsecs: 0
+  id: ''
+goal:
+  target_pose:
+    header:
+      seq: 0
+      stamp:
+        secs: 0
+        nsecs: 0
+      frame_id: 'map'
+    pose:
+      position:
+        x: 0.0
+        y: 1.0
+        z: 0.0
+      orientation:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0" 
+```
+
 ## Group members
 
 | Name Surname          | ID       |
