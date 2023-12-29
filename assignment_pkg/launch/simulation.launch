@@ -74,5 +74,7 @@
   <!-- Spawn the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/exp_rob
       joint_state_controller "></node>
+      
+  <include file="$(find rosbot_bringup)/launch/rosbot_rviz_gmapping.launch"></include>
 </launch>
 

@@ -5,4 +5,5 @@
 
   <include file="$(find rosbot_bringup)/launch/gmapping.launch"></include>
 
+  <include file="$(find planning)/launch/move_base.launch"></include>
 </launch>
