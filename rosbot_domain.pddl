@@ -9,9 +9,6 @@
     )
 
     (:predicates
-        
-        
-        
         (marker_at ?m - marker ?wp - waypoint)
         (robot_at ?r - rosbot ?wp - waypoint)
         (visited ?wp - waypoint)
