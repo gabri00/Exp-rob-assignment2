@@ -8,8 +8,7 @@ namespace KCL_rosplan {
 	{
 
 	private:
-		ros::Publisher goal_pub;
-		ros::Publisher cmd_vel_pub;
+
 	public:
 
 		/* constructor */
