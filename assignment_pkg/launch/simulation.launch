@@ -76,5 +76,7 @@
       joint_state_controller "></node>
       
   <include file="$(find rosbot_bringup)/launch/rosbot_rviz_gmapping.launch"></include>
+  
+  <node name="robot_controller" pkg="assignment_pkg" type="logic.py" />
 </launch>
 
