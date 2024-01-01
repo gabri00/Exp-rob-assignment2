@@ -67,7 +67,15 @@
     <param name="pddl_action_name" value="goto" />
     <param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
     <param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
-    <param name="additional_actions" value="detect" />
+    <!-- <param name="additional_actions" value="detect" /> -->
+  </node>
+  
+  <node name="rosplan_interface_detection" pkg="my_rosplan_interface" type="myaction2" respawn="false" output="screen">
+    <param name="knowledge_base" value="rosplan_knowledge_base" />
+    <param name="pddl_action_name" value="detect" />
+    <param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+    <param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+    <!-- <param name="additional_actions" value="detect" /> -->
   </node>
   
   <rosparam file="$(find rosbot_description)/config/joint_state_controller.yaml" command="load" ns="/exp_rob" />
