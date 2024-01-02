@@ -263,16 +263,16 @@
   </transmission>
 
   <!-- Orbbec Astra RGBD Camera -->
-  <joint name="astra_joint" type="continuous">
-    <axis xyz="0 0 1" />
+  <joint name="astra_joint" type="fixed">
+    <axis xyz="0 0 0" />
     <origin xyz="-0.03 0 0.18" rpy="0 0 0"/>
     <parent link="body_link"/>
     <child link="camera_link"/>
-    <limit effort="1" velocity="10"/>
-    <joint_properties damping="5.0" friction="1.0"/>
+    <!-- <limit effort="1" velocity="10"/>
+    <joint_properties damping="5.0" friction="1.0"/> -->
   </joint>
 
-  <transmission name="astra_joint_trans">
+  <!-- <transmission name="astra_joint_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="astra_joint">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -280,9 +280,8 @@
     <actuator name="astra_joint_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    
-  </transmission>
+    </actuator>    
+  </transmission> -->
 
   <link name="camera_link">
     <collision>

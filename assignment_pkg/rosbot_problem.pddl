@@ -1,6 +1,6 @@
 (define (problem rosbot_problem) 
     (:domain rosbot_domain)
-    (:objects 
+    (:objects
         rosbot - rosbot
 
         wp0 - waypoint
@@ -64,5 +64,4 @@
     (detected m3)
     (detected m4)
 ))
-
 )
