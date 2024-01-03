@@ -50,11 +50,14 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>assignment_pkg</build_depend>
   <build_depend>rosplan_planning_system</build_depend>
   <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>assignment_pkg</build_export_depend>
   <build_export_depend>rosplan_planning_system</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rosplan_planning_system</exec_depend>
+  <exec_depend>assignment_pkg</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

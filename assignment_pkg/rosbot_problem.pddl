@@ -50,7 +50,11 @@
     (not_detected m2)
     (not_detected m3)
     (not_detected m4)
-
+    (connected wp0 wp1)
+    (connected wp1 wp2)
+    (connected wp2 wp3)
+    (connected wp3 wp4)
+    (connected wp4 wp0)
 )
 
 (:goal (and

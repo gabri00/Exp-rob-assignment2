@@ -16,11 +16,12 @@
         (different ?wp1 - waypoint ?wp2 - waypoint)
         (not_visited ?wp - waypoint)
         (not_detected ?m - marker)
+        (connected ?wp1 - waypoint ?wp2 - waypoint)
     )
 
     (:action goto
         :parameters (?r - rosbot ?wp1 - waypoint ?wp2 - waypoint)
-        :precondition (and  (robot_at ?r ?wp1) (not_visited ?wp2) (different ?wp1 ?wp2))
+        :precondition (and  (robot_at ?r ?wp1) (not_visited ?wp2) (different ?wp1 ?wp2) (connected ?wp1 ?wp2))
         :effect (and (robot_at ?r ?wp2) (not (robot_at ?r ?wp1)) (visited ?wp2) (not(not_visited ?wp2)))
     )
 

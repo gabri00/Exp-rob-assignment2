@@ -4,32 +4,46 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <motion_plan/PlanningAction.h>
+#include "geometry_msgs/Twist.h"
+
+#include <cstdlib>
 
 namespace KCL_rosplan {
 
-	MyActionInterface::MyActionInterface(ros::NodeHandle &nh) {
-	
-	}
 
-	bool MyActionInterface::concreteCallback(const rosplan_dispatch_msgs::ActionDispatch::ConstPtr& msg) {
+	MyActionInterface::MyActionInterface(ros::NodeHandle &nh) {
+	    cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
+	    detected_ack_sub = nh.subscribe("/ack/detected", 10, &MyActionInterface::ack_callback, this);
+	    // client = nh.serviceClient<assignment_pkg::detection_srv>("/detection");
+	    ack = false;
+	}
+	
+	    void MyActionInterface::ack_callback(const std_msgs::Bool::ConstPtr& msg) {
+        ack = msg->data;
+    }
+
+	bool MyActionInterface::concreteCallback(const rosplan_dispatch_msgs::ActionDispatch::ConstPtr& msg) {	
 		
-		actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> ac("move_base", true);
-		move_base_msgs::MoveBaseGoal goal;
-		ac.waitForServer();
-		
-		goal.target_pose.header.frame_id = "map";
-		goal.target_pose.pose.orientation.w = 1.0;
+		geometry_msgs::Twist cmd_vel_msg;
 		
 		
 		if (msg->name == "detect") {
-		    std::cout << "Detect " << msg->parameters[1].value << " to " << msg->parameters[2].value << std::endl;
-			
-			goal.target_pose.pose.position.x = 3.0;
-			goal.target_pose.pose.position.y = 1.0;
-			
-		}
-		ac.sendGoal(goal);
-		ac.waitForResult();
+		    while (!ack) {
+		        cmd_vel_msg.angular.z = 0.3;
+			    cmd_vel_pub.publish(cmd_vel_msg);
+		    }
+		    /*std::cout << "Detect " << msg->parameters[1].value << " to " << msg->parameters[2].value << std::endl;
+		    srv.request.id = 11;
+		    
+		    do
+            {
+                client.call(srv);
+                ROS_INFO("ACK: %d", (int)srv.response.ack);        
+		        cmd_vel_msg.angular.z = 0.3;
+			    cmd_vel_pub.publish(cmd_vel_msg);
+            } while (!srv.response.ack);*/
+       }
+
 		
 		ROS_INFO("Action (%s) performed: completed!", msg->name.c_str());
 		return true;

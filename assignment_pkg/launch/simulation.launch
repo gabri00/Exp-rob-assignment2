@@ -12,9 +12,11 @@
 
   <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
 
-  <node name="markers_node" pkg="assignment_pkg" type="markers_node" />
+  <node name="markers_node" pkg="assignment_pkg" type="markers_node" output="screen"/>
 
-  <!-- <node name="image_view" pkg="image_view" type="image_view" args="/image:=marker_publisher/result /> -->
+  <node name="image_view" pkg="image_view" type="image_view" output="screen">
+     <remap from="image" to="/markers_node/result"/>
+  </node>
   
   <rosparam file="$(find rosbot_description)/config/joint_state_controller.yaml" command="load" ns="/exp_rob" />
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/exp_rob joint_state_controller"></node>

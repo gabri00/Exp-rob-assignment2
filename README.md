@@ -2,6 +2,14 @@
 
 ## Comandi utili per lanciare tutte le parti di rosplan in sequenza
 
+TODO:
+    aggiungere terminazione programma
+    controllo dell'id
+    sistemare i file e indentazione
+    fare flowchart
+    fare video simulazione
+    fare video robot reale
+
 Prima bisogna creare il file domain.pddl e problem.pddl
 Poi bisogna creare un file launch con tutto il necessario e lanciarlo:
 ```bash
@@ -14,6 +22,8 @@ rosservice call /rosplan_problem_interface/problem_generation_server
 rosservice call /rosplan_planner_interface/planning_server
 rosservice call /rosplan_parsing_interface/parse_plan
 rosservice call /rosplan_plan_dispatcher/dispatch_plan
+
+rostopic echo /rosplan_planner_interface/planner_output -p
 ```
 
 Clone the following packages:

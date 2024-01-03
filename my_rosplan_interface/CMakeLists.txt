@@ -10,6 +10,7 @@ project(my_rosplan_interface)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosplan_planning_system
+  assignment_pkg
 )
 
 ## System dependencies are found with CMake's conventions

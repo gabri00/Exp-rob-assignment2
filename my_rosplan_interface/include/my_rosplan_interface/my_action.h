@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include "rosplan_action_interface/RPActionInterface.h"
-
+#include "assignment_pkg/detection_srv.h"
+#include "std_msgs/Bool.h"
 
 namespace KCL_rosplan {
 
@@ -8,8 +9,13 @@ namespace KCL_rosplan {
 	{
 
 	private:
-
+	    ros::Publisher cmd_vel_pub;
+	    // ros::ServiceClient client;
+		// assignment_pkg::detection_srv srv;
+		ros::Subscriber detected_ack_sub;
 	public:
+		bool ack;
+		void ack_callback(const std_msgs::Bool::ConstPtr& msg);
 
 		/* constructor */
 		MyActionInterface(ros::NodeHandle &nh);
