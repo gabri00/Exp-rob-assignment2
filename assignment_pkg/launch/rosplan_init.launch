@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="domain_path" default="$(find assignment_pkg)/rosbot_domain.pddl" />
-  <arg name="problem_path" default="$(find assignment_pkg)/rosbot_problem.pddl" />
+  <arg name="domain_path" default="$(find assignment_pkg)/pddl/rosbot_domain.pddl" />
+  <arg name="problem_path" default="$(find assignment_pkg)/pddl/rosbot_problem.pddl" />
 
   <!-- knowledge base -->
   <node name="rosplan_knowledge_base" pkg="rosplan_knowledge_base" type="knowledgeBase" respawn="false" output="screen">
@@ -15,7 +15,7 @@
   <include file="$(find rosplan_planning_system)/launch/includes/problem_interface.launch">
     <arg name="knowledge_base" value="rosplan_knowledge_base" />
     <arg name="domain_path" value="$(arg domain_path)" />
-    <arg name="problem_path" value="$(find assignment_pkg)/new_problem.pddl" />
+    <arg name="problem_path" value="$(find assignment_pkg)/pddl/new_problem.pddl" />
     <arg name="problem_topic" value="problem_instance" />
   </include>
 

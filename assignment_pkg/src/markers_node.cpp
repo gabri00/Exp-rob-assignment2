@@ -33,10 +33,10 @@ private:
   image_transport::Publisher debug_pub_;
 
   ros::Publisher detected_ack_pub_;
-  
-  // ros::ServiceServer detection_srv;
 
   cv::Mat inImage_;
+  
+  std::vector<int> markers;
 
 public:
   ArucoMarkerPublisher() : nh_("~"), it_(nh_), useCamInfo_(true)
@@ -46,24 +46,12 @@ public:
     debug_pub_ = it_.advertise("debug", 1);
 
     detected_ack_pub_ = nh_.advertise<std_msgs::Bool>("/ack/detected", 1);
-    // detection_srv = nh_.advertiseService("/detection", &ArucoMarkerPublisher::detection, this);
   
     nh_.param<bool>("use_camera_info", useCamInfo_, false);
     camParam_ = aruco::CameraParameters();
+    
+    markers = {11, 12, 13, 15};
   }
-  
-  /*bool detection(assignment_pkg::detection_srv::Request  &req, assignment_pkg::detection_srv::Response &res) {
-    // If a marker is detected, publish the marker ID and center
-    if (markers_.size() > 0) {
-        for (std::size_t i = 0; i < markers_.size(); ++i)
-        {
-            if (markers_.at(i).id == req.id)
-                res.ack = true;
-        }
-    }
-    res.ack = false;
-    return true;
-  }*/
   
   void image_callback(const sensor_msgs::ImageConstPtr& msg)
   {
@@ -88,9 +76,16 @@ public:
       // If a marker is detected, publish the marker ID and center
       if (markers_.size() > 0)
       {
-            ack_msg.data = true;
-            detected_ack_pub_.publish(ack_msg);
-            std::cout << "MARKER DERR ";
+        for (std::size_t i = 0; i < markers_.size(); ++i)
+        {
+            if (markers_.at(i).id == markers[0])
+            {
+                ack_msg.data = true;
+                detected_ack_pub_.publish(ack_msg);
+                
+                if (!markers.empty()) markers.erase(markers.begin());
+            }
+        }
       }
       else {ack_msg.data = false; detected_ack_pub_.publish(ack_msg);}
 

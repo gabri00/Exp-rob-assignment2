@@ -23,8 +23,8 @@
 
   <include file="$(find assignment_pkg)/launch/rosplan_init.launch"></include>
 
-  <include file="$(find rosbot_bringup)/launch/rosbot_rviz_gmapping.launch"></include>
+  <include file="$(find rosbot_bringup)/launch/gmapping.launch"></include>
 
-  <!-- <node name="robot_controller" pkg="assignment_pkg" type="logic.py" /> -->
+  <include file="$(find assignment_pkg)/launch/move_base.launch"></include>
 </launch>
 
