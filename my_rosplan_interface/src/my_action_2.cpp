@@ -29,19 +29,9 @@ namespace KCL_rosplan {
 		
 		if (msg->name == "detect") {
 		    while (!ack) {
-		        cmd_vel_msg.angular.z = 0.3;
+		        cmd_vel_msg.angular.z = 0.5;
 			    cmd_vel_pub.publish(cmd_vel_msg);
 		    }
-		    /*std::cout << "Detect " << msg->parameters[1].value << " to " << msg->parameters[2].value << std::endl;
-		    srv.request.id = 11;
-		    
-		    do
-            {
-                client.call(srv);
-                ROS_INFO("ACK: %d", (int)srv.response.ack);        
-		        cmd_vel_msg.angular.z = 0.3;
-			    cmd_vel_pub.publish(cmd_vel_msg);
-            } while (!srv.response.ack);*/
        }
 
 		

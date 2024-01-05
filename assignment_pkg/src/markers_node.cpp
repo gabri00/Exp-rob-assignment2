@@ -50,7 +50,7 @@ public:
     nh_.param<bool>("use_camera_info", useCamInfo_, false);
     camParam_ = aruco::CameraParameters();
     
-    markers = {11, 12, 13, 15};
+    markers = { 11, 12, 13, 15 };
   }
   
   void image_callback(const sensor_msgs::ImageConstPtr& msg)
@@ -80,14 +80,18 @@ public:
         {
             if (markers_.at(i).id == markers[0])
             {
-                ack_msg.data = true;
-                detected_ack_pub_.publish(ack_msg);
-                
-                if (!markers.empty()) markers.erase(markers.begin());
+              ack_msg.data = true;
+              detected_ack_pub_.publish(ack_msg);
+
+              if (!markers.empty()) markers.erase(markers.begin());
             }
         }
       }
-      else {ack_msg.data = false; detected_ack_pub_.publish(ack_msg);}
+      else
+      {
+        ack_msg.data = false;
+        detected_ack_pub_.publish(ack_msg);
+      }
 
       // draw detected markers on the image for visualization
       for (std::size_t i = 0; i < markers_.size(); ++i)
