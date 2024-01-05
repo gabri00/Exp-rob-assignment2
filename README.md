@@ -1,71 +1,5 @@
 # Assignment 2
 
-## Comandi utili per lanciare tutte le parti di rosplan in sequenza
-
-TODO:
-    aggiungere terminazione programma
-    controllo dell'id
-    sistemare i file e indentazione
-    fare flowchart
-    fare video simulazione
-    fare video robot reale
-
-Prima bisogna creare il file domain.pddl e problem.pddl
-Poi bisogna creare un file launch con tutto il necessario e lanciarlo:
-```bash
-roslaunch rosplan_planning_system file_name.launch
-```
-
-Poi bisogna lanciare i seguenti comandi su un altro terminale:
-```bash
-rosservice call /rosplan_problem_interface/problem_generation_server
-rosservice call /rosplan_planner_interface/planning_server
-rosservice call /rosplan_parsing_interface/parse_plan
-rosservice call /rosplan_plan_dispatcher/dispatch_plan
-
-rostopic echo /rosplan_planner_interface/planner_output -p
-```
-
-Clone the following packages:
-```bash
-git clone https://github.com/CarmineD8/my_rosplan_interface.git
-git clone https://github.com/CarmineD8/rt2_packages.git
-git clone https://github.com/CarmineD8/planning.git
-```
-
-Come pubblicare il goal da terminale per la move_base:
-```bash
-rostopic pub /move_base/goal move_base_msgs/MoveBaseActionGoal "header:
-  seq: 0
-  stamp:
-    secs: 0
-    nsecs: 0
-  frame_id: ''
-goal_id:
-  stamp:
-    secs: 0
-    nsecs: 0
-  id: ''
-goal:
-  target_pose:
-    header:
-      seq: 0
-      stamp:
-        secs: 0
-        nsecs: 0
-      frame_id: 'map'
-    pose:
-      position:
-        x: 0.0
-        y: 1.0
-        z: 0.0
-      orientation:
-        x: 0.0
-        y: 0.0
-        z: 0.0
-        w: 1.0" 
-```
-
 ## Group members
 
 | Name Surname          | ID       |
@@ -77,60 +11,75 @@ goal:
 
 ## Preliminary operations
 
+You'll need to install some additional ROS packages:
+
+```bash
+cd ~/<ros_workspace>/src
+git clone https://github.com/CarmineD8/aruco_ros.git
+git clone https://github.com/CarmineD8/SLAM_packages.git # Remember to switch to noetic branch
+git clone https://github.com/KCL-Planning/ROSPlan.git
+```
+
+For *ROSPlan* follow the instruction in their [readme](https://github.com/KCL-Planning/ROSPlan/blob/master/README.md) to properly install the dependencies.
+
 Install dependencies:
 
 ```bash
-cd ~/<your_workspace>
+cd ~/<ros_workspace>
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
 Build the workspace:
 
 ```bash
-cd ~/<your_workspace>
+cd ~/<ros_workspace>
 catkin_make
+catkin_make --only-pkg-with-deps my_rosplan_interface
 ```
 
-## Run on the Rosbot
+## Run Gazebo simulation
 
-#### Step 1: Connect to the local network
-
-| Network name | Network password |
-| ------------ | ---------------- |
-| TP_LINK      | 03694008         |
-
-#### Step 2: Add the ROS master URI and user's IP address
-
-Add the following lines at the bottom of the `~/.bashrc` file:
+Run the simulation:
 
 ```bash
-export ROS_MASTER_URI=https://192.168.1.10x:11311
-export ROS_IP=<YOUR_IP_ADDRESS>
+roslaunch assignment_pkg simulation.launch
 ```
 
-#### Step 3: Connect to the robot via SSH
-
-In the local terminal:
-
+In another terminal, after launching the simulation, build and dispatch the plan:
 ```bash
-ssh husarion@192.168.1.10x
-# x is the identifier number of the robot (written on the bot)
+cd ~/<ros_workspace>/src/Exp-rob-assignment2/
+./rosplan_services.bash
 ```
 
-**Password**: husarion
-
-#### Step 4: Start the drivers
-
-In the Rosbot terminal:
-
+To check the generated plan:
 ```bash
-roslaunch tutorial_pkg all.launch
+rostopic echo /rosplan_planner_interface/planner_output -p
 ```
 
-#### Step 5: Start the simulation
+## Description of the packages
 
-From the local terminal:
+...
 
-```bash
-roslaunch rosbot_gazebo real_rosbot.launch
-```
+#### Rqt graph
+
+![Gazebo rqt](media/graph.png)
+
+#### Flowchart
+
+![Flowchart](media/flowchart.png)
+
+#### Video demo
+
+## Further improvements
+
+1. 
+2. 
+3. 
+
+## References
+
+- [Husarion ROSbot](https://husarion.com/manuals/rosbot/)
+
+- [ROSbot GitHub repository](https://github.com/husarion/rosbot_ros/)
+
+- [Course professor](https://github.com/CarmineD8/)
