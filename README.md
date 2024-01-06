@@ -58,7 +58,20 @@ rostopic echo /rosplan_planner_interface/planner_output -p
 
 ## Description of the packages
 
-...
+The project works mainly through 3 packages:
+1. *assignment_pkg*
+2. *my_rosplan_interface*
+3. *rosbot_ros* (and its sub-packages)
+
+#### 1. assignment_pkg
+
+#### 2. my_rosplan_interface
+
+#### 3. rosbot_ros
+
+This directory contains the set of packages of the [ROSbot](https://husarion.com/manuals/rosbot/).
+It provides the basic functionalities of the robot, such as the *joint state controller* configuration and the *gmapping* launch files.
+This directory mostly follows what has been done in the previous assignment ([Assignment 1](https://github.com/gabri00/Exp-rob-assignment1)).
 
 #### Rqt graph
 
