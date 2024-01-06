@@ -62,13 +62,15 @@ rostopic echo /rosplan_planner_interface/planner_output -p
 
 #### Rqt graph
 
-![Gazebo rqt](media/graph.png)
+![Gazebo rqt](media/rqt_graph.png)
 
 #### Flowchart
 
 ![Flowchart](media/flowchart.png)
 
 #### Video demo
+
+https://github.com/gabri00/Exp-rob-assignment2/assets/31885249/597f6e62-6481-4e97-b565-68672145cb75
 
 ## Further improvements
 
