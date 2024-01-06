@@ -39,8 +39,8 @@ namespace KCL_rosplan {
 				goal.target_pose.pose.position.y = -5.0;
 			}
 			else if (msg->parameters[2].value == "wp3") {
-				goal.target_pose.pose.position.x = -3.5;
-				goal.target_pose.pose.position.y = -8.0;
+				goal.target_pose.pose.position.x = -3.3;
+				goal.target_pose.pose.position.y = -7.8;
 			}
 			else if (msg->parameters[2].value == "wp4") {
 				goal.target_pose.pose.position.x = -7.5;
