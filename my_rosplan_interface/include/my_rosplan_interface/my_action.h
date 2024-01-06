@@ -5,13 +5,9 @@
 
 namespace KCL_rosplan {
 
-	class MyActionInterface: public RPActionInterface
-	{
-
+	class MyActionInterface: public RPActionInterface {
 	private:
 	    ros::Publisher cmd_vel_pub;
-	    // ros::ServiceClient client;
-		// assignment_pkg::detection_srv srv;
 		ros::Subscriber detected_ack_sub;
 	public:
 		bool ack;

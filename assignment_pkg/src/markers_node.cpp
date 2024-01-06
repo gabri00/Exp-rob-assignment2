@@ -49,8 +49,11 @@ public:
   
     nh_.param<bool>("use_camera_info", useCamInfo_, false);
     camParam_ = aruco::CameraParameters();
-    
-    markers = { 11, 12, 13, 15 };
+
+    if (!nh_.getParam("/markers", markers)) {
+      ROS_ERROR("UNABLE TO GET MARKERS FROM PARAM, USING DEFAULT LIST");
+      markers = { 11, 12, 13, 15 };
+    }
   }
   
   void image_callback(const sensor_msgs::ImageConstPtr& msg)
@@ -80,6 +83,7 @@ public:
         {
             if (markers_.at(i).id == markers[0])
             {
+              ROS_INFO("MARKER %d DETECTED", markers_.at(i).id);
               ack_msg.data = true;
               detected_ack_pub_.publish(ack_msg);
 
