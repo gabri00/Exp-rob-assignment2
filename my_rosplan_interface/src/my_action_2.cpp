@@ -28,8 +28,9 @@ namespace KCL_rosplan {
 		
 		
 		if (msg->name == "detect") {
+		    std::cout << "DETECTING " << msg->parameters[2].value << std::endl;
 		    while (!ack) {
-		        cmd_vel_msg.angular.z = 0.5;
+		        cmd_vel_msg.angular.z = 0.3;
 			    cmd_vel_pub.publish(cmd_vel_msg);
 		    }
        }

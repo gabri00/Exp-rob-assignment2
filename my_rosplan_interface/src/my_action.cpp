@@ -21,7 +21,7 @@ namespace KCL_rosplan {
 		goal.target_pose.pose.orientation.w = 1.0;
 
 		if (msg->name == "goto") {
-		    std::cout << "Going from " << msg->parameters[1].value << " to " << msg->parameters[2].value << std::endl;
+		    std::cout << "GOING FROM " << msg->parameters[1].value << " TO " << msg->parameters[2].value << std::endl;
 			if(msg->parameters[2].value == "wp1") {
 				goal.target_pose.pose.position.x = 5.0;
 				goal.target_pose.pose.position.y = 2.5;
@@ -31,8 +31,8 @@ namespace KCL_rosplan {
 				goal.target_pose.pose.position.y = -5.0;
 			}
 			else if (msg->parameters[2].value == "wp3") {
-				goal.target_pose.pose.position.x = -3.0;
-				goal.target_pose.pose.position.y = -7.5;
+				goal.target_pose.pose.position.x = -3.5;
+				goal.target_pose.pose.position.y = -8.0;
 			}
 			else if (msg->parameters[2].value == "wp4") {
 				goal.target_pose.pose.position.x = -7.5;
