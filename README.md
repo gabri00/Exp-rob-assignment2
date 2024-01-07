@@ -96,9 +96,8 @@ https://github.com/gabri00/Exp-rob-assignment2/assets/31885249/597f6e62-6481-4e9
 
 ## Further improvements
 
-1. 
-2. 
-3. 
+1. Increasing the velocity of the robot to reduce the time needed to reach all the waypoints.
+2. Implementig a more general domain and problem files, so that the robot can perform with a different number of markers and waypoints.
 
 ## References
 
