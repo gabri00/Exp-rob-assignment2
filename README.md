@@ -65,7 +65,16 @@ The project works mainly through 3 packages:
 
 #### 1. assignment_pkg
 
+In this package the pddl planning is implemented. The *domain* and *problem* files are provided in the folder `pddl/`, while all the necessary nodes are launched with the `rosplan_init.launch` launch file.
+
+This package also contains the configuration for the *gmapping* and *move base* mechanisms. In particular, the yaml configuration can be found in the `param/` folder. The move base is directily in this package while the gmapping is retrieved form the `rosbot_bringup` package, which contains some preset configurations for the rosbot.
+
 #### 2. my_rosplan_interface
+
+This package implements the action dispatch mechanism and associates each action with a specific robot's action.
+We handle 2 actions:
+- *goto*: when this action is dispatched, the `my_action` node sends the corresponding waypoint coordinates with an action client.
+- *detect*: when this action is dispatched, the `my_action` node checks if an ack has been received from the `markers_node` node. If the no marker was detected, than the ack is set to false and the robot rotates in place until it finds the marker.
 
 #### 3. rosbot_ros
 
